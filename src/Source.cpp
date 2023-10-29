@@ -287,7 +287,10 @@ bool game_is_done(char board[3][3])
 
 int main()
 {
-	char board[3][3] = { EMPTY_SPACE };
+	int board_size = 3;
+
+
+	char board[board_size][board_size] = { EMPTY_SPACE };
 
 	cout << "********************************\n\n\tTic Tac Toe AI\n\n********************************" << endl << endl;
 	cout << "Player = X\t AI Computer = O" << endl << endl;
