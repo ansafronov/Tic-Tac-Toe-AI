@@ -1,12 +1,17 @@
 #include <gtest/gtest.h>
 #include <../src/utils.cpp>
 #include <iostream>
+#include <sstream>
 #include <vector>
 #include <array>
 
-// TEST(ExceptionTests, Invalidcin) {
-// 	EXPECT_THROW(get_row(), std::runtime_error);
-//}
+TEST(ExceptionTests, Invalid_cin_row) {
+ 	EXPECT_THROW(get_row(), std::runtime_error);
+}
+
+TEST(ExceptionTests, Invalid_cin_col) {
+ 	EXPECT_THROW(get_col(), std::runtime_error);
+}
 
 TEST(BoardStateTest, getboardstatetest) {
 	std::vector<std::pair<int, int>> legal_moves;
@@ -49,7 +54,8 @@ TEST(BoardStateTest, occupied_positions) {
 
 int main(int argc, char **argv)
 {
-  ::testing::InitGoogleTest(&argc, argv);
-  
-  return RUN_ALL_TESTS();
+	::testing::InitGoogleTest(&argc, argv);
+	std::istringstream stream("jkjk");
+	std::streambuf* cin_backup = std::cin.rdbuf(stream.rdbuf());
+	return RUN_ALL_TESTS();
 }
